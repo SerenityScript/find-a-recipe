@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import video from './food.mp4';
 import MyRecipesComponent from './MyRecipesComponent';
+import Input from './Input';
+import Footer from './Footer';
 
 function App() {
-
   const MY_ID = "ccbc3f66";
   const MY_KEY = "7d46e16acf4154779eed978fef9dd881";
 
@@ -17,7 +18,6 @@ function App() {
       const response = await fetch(`https://api.edamam.com/api/recipes/v2?type=public&q=${wordSubmitted}&app_id=${MY_ID}&app_key=${MY_KEY}`);
       const data = await response.json();
       setMyRecipes(data.hits);
-      console.log(data);
     }
     getRecipe()
   }, [wordSubmitted])
@@ -28,41 +28,43 @@ function App() {
 
   const finalSearch = (e) => {
     e.preventDefault();
-    setWordSubmitted(mySearch)
+    setWordSubmitted(mySearch);
+    setMySearch("")
   }
 
   return (
-    <div className="App">
-      <div className="container">
+    <div>
+      <video autoPlay muted loop>
+        <source src={video} type="video/mp4" />
+      </video>
 
-        <video autoPlay muted loop>
-          <source src={video} type="video/mp4" />
-        </video>
-
-        <h1>Find a Recipe</h1>
+      <div className='container'>
+        <h1>Find a recipe</h1>
       </div>
 
       <div className='container'>
-        <form onSubmit={finalSearch}>
-          <input className='search' onChange={myRecipeSearch} value={mySearch}/>
-        </form>
+        <Input mySearch={mySearch}
+          finalSearch={finalSearch}
+          myRecipeSearch={myRecipeSearch}
+        />
       </div>
 
-      <div className='container'>
-        <button onClick={finalSearch}>
-          <img src="https://img.icons8.com/fluency/48/000000/fry.png" alt="icon"/>
-        </button>
-      </div>
+      {myRecipes.map((element, index) => (
+        <MyRecipesComponent key={index}
+          label={element.recipe.label}
+          calories={element.recipe.calories}
+          image={element.recipe.images.SMALL.url}
+          ingredients={element.recipe.ingredientLines}
+          instructions={element.recipe.url}
+          source={element.recipe.source}
+          carbs={element.recipe.totalNutrients.CHOCDF.quantity}
+          fat={element.recipe.totalNutrients.FAT.quantity}
+          protein={element.recipe.totalNutrients.PROCNT.quantity}
+          servings={element.recipe.yield}
+        />
+      ))}
 
-        {myRecipes.map((element, index) => (
-          <MyRecipesComponent key={index}
-            label={element.recipe.label}
-            calories={element.recipe.calories}
-            image={element.recipe.images.SMALL.url}
-            ingredients={element.recipe.ingredientLines}
-          />
-        ))}
-      
+      <Footer />
     </div>
   );
 }

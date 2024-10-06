@@ -8,47 +8,149 @@ video {
   z-index: -1;
 }
 
-.App {
-  background-color: rgba(255, 255, 255, 0.5);
-}
-
 .container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
-.search {
-  width: 100%;
-  padding: 12px 24px;
-  background-color: transparent;
-  color: #575756;
-  box-shadow: inset 0px 0px 0px 4px #ddd6e8;
+h1 {
+  color: #ffffff;
+  letter-spacing: 5px;
+}
+
+
+
+.Recipe {
+  background-color: rgba(255, 255, 255, 0.8);
+  margin: 1% 20% ;
+  padding: 2%;
+  border-radius: 10px;
+}
+
+.recipeImg {
+  border-radius: 10px;
+  width: 150px;
+}
+
+.nutrient {
+  margin: 0;
+  font-size: 14px;
+}
+
+.underlined {
+  text-decoration: underline;
 }
 
 .list {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 5px ;
 }
 
 li {
-  background-color: #ddd6e8;
-  padding: 10px;
-  margin: 10px;
+  list-style: circle;
+  padding: 5px;
+  margin: 5px;
   font-family: "Open Sans", sans-serif;
 }
 
-h1, h2, p, ul {
+h1, h2, h3, p, ul {
   font-family: "Open Sans", sans-serif;
-}
-
-.icon {
-  width: 30px;
 }
 
 button {
-  margin-top: 10px;
-  border-radius: 12px;
   border: none;
-  background-color: #dbecc4;
+  background-color: transparent;
 }
+
+a {
+  color: black;
+}
+
+
+/* From Uiverse.io by alexmaracinaru */ 
+.cta {
+  position: relative;
+  margin: auto;
+  padding: 6px 10px;
+  transition: all 0.2s ease;
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.cta:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  border-radius: 50px;
+  background: #b1dae7;
+  width: 35px;
+  height: 35px;
+  transition: all 0.3s ease;
+}
+
+.cta span {
+  position: relative;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #234567;
+}
+
+.cta svg {
+  position: relative;
+  top: 0;
+  margin-left: 10px;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: #234567;
+  stroke-width: 2;
+  transform: translateX(-5px);
+  transition: all 0.3s ease;
+}
+
+.cta:hover:before {
+  width: 100%;
+  background: #b1dae7;
+}
+
+.cta:hover svg {
+  transform: translateX(0);
+}
+
+.cta:active {
+  transform: scale(0.95);
+}
+
+@media all and (max-width: 1024px) {
+  .Recipe {
+    margin: 1% 8% ;
+  }
+}
+
+@media all and (max-width: 820px) {
+  .Recipe {
+    margin: 1% 5% ;
+  }
+}
+
+@media all and (max-width: 500px) {
+  .Recipe {
+    margin: 1% 2% ;
+  }
+  h3 {
+    font-size: 17px;
+  }
+  .nutrient {
+    font-size: 10px;
+  }
+}
+
