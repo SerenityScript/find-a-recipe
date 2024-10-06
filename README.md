@@ -6,8 +6,8 @@ A React application that uses an API to find recipes based on a given ingredient
 
 Try out the application here: [https://find-a-recipe-serenityscript.netlify.app/](https://find-a-recipe-serenityscript.netlify.app/)
 
-[![Recipe Finder App Demo](https://i.imgur.com/your-image-url.png)](https://find-a-recipe-serenityscript.netlify.app/)
-<img src="./demo.png" alt="Logo" width="450" height="300">
+[![Find a recipe](src/demo.png)](https://find-a-recipe-serenityscript.netlify.app/)
+
 
 ## Table of Contents
 
